@@ -54,8 +54,9 @@ Slisync uses a **12-phase product vision** for direction and **engineering Phase
 
 ## Ecosystem shipped for demos
 
-- Markdown export M0–M4: CLI, HTTP, `fetchExportChunksZipHttp`, optional Postgres  
+- Markdown export M0–M4: CLI (`export:chunks`), HTTP (`export:chunks:http`), `fetchExportChunksZipHttp`, optional Postgres  
 - Room task bus + demo Task board tab  
+- Browser IndexedDB local-first + offline outbox ([Local-first](../guide/local-first.md))  
 
 ## Next (not scheduled)
 

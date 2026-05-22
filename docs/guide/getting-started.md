@@ -82,10 +82,11 @@ Sibling repo next to the implementation:
 
 ```bash
 cd ~/Documents/GitHub/slisync-docs
+nvm use 20
 npm install && npm run dev   # http://localhost:5173
 ```
 
-Or from the **slisync** repo root: `npm run docs:dev` (runs sibling `../slisync-docs`).
+The docs site is **not** started from the slisync app repo — run commands in `slisync-docs` only.
 
 ## 6. Tests
 

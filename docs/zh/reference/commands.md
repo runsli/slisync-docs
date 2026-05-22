@@ -8,8 +8,12 @@
 |------|------|
 | `npm run dev` | Next Demo + Sync（:3000） |
 | `npm run dev:stop` | 停止 dev 进程 |
+| `npm run build` | Next 生产构建 |
+| `npm run start` | 生产模式启动（`server.ts`） |
 | `npm run sync:server` | 仅 Sync（:3001） |
+| `npm run sync:server:dev` | Sync 服务 watch 模式 |
 | `npm run sync:reset` | 清空本地 `.sync-data` |
+| `npm run lint` | ESLint |
 
 ## Agent 与 Graph
 
@@ -30,6 +34,7 @@
 | `npm run export:chunks` | 从 CRDT JSON 文件导出 |
 | `npm run export:chunks:http` | 从运行中 server HTTP 导出 |
 | `npm run export:chunks:ci` | 使用 fixture，无需 dev |
+| `npm run fixtures:refresh` | 用当前 `.sync-data` 刷新 `fixtures/crdt-rooms.example.json` |
 
 ## 持久化与集群
 
@@ -45,15 +50,16 @@
 | 命令 | 说明 |
 |------|------|
 | `npm run build:packages` | 构建 `@slisync/*` dist |
-| `npm test` | 单元 + 集成测试 |
+| `npm test` | 单元 + 集成测试（64 cases） |
 | `npm run test:cluster` | Redis 双实例测试 |
+| `npm run test:postgres` | PostgreSQL CRDT 持久化集成测试 |
 
 ## 文档站（VitePress）
 
+在 **[slisync-docs](https://github.com/runsli/slisync-docs)** 仓库执行（不是 slisync 应用仓库）：
+
 | 命令 | 说明 |
 |------|------|
-| `npm run docs:dev` | 本官网开发 :5173 |
-| `npm run docs:build` | 构建静态站 |
-| `npm run docs:preview` | 预览构建结果 |
-
-或在 `~/Documents/GitHub/slisync-docs/` 内直接 `npm run dev` / `build`。
+| `npm run dev` | 开发 :5173 |
+| `npm run build` | 构建静态站 |
+| `npm run preview` | 预览构建结果 |

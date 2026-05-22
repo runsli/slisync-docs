@@ -82,10 +82,11 @@ NEXT_PUBLIC_SYNC_URL=http://localhost:3001 npm run dev
 
 ```bash
 cd ~/Documents/GitHub/slisync-docs
+nvm use 20
 npm install && npm run dev   # http://localhost:5173
 ```
 
-或在 **slisync** 根目录：`npm run docs:dev`（会调用同级 `../slisync-docs`）。
+文档站**不能**在 slisync 应用仓库根目录启动 — 请在 `slisync-docs` 目录执行上述命令。
 
 ## 6. 测试
 

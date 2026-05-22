@@ -50,7 +50,9 @@ flowchart TB
 | 4 | 再开一浏览器窗口，同 URL | 数秒内内容一致；在线人数约 2 |
 | 5 | 终端执行 `npm run graph:seed` 或 `agent:push` | Agent 活动 toast；图/chunk 可能更新 |
 | 6 | DevTools **Offline** 改 chunk → 刷新 → 恢复网络 | 本地编辑仍在（[Local-first](./local-first.md)） |
-| 7 | 点 **「导出 Markdown（HTTP）」** | 下载 `{room}-chunks.zip` |
+| 7 | 点 **「导出 Markdown（HTTP）」** / zip 按钮 | 下载 `{room}-chunks.zip`（`Accept: application/zip`） |
+
+> `message` / `counter` 在折叠的 **旧版共享字段** 中，不是主路径。
 
 ## CLI 与 Demo 对齐
 
@@ -59,7 +61,18 @@ npm run graph:seed
 npm run agent:push -- --action summarize --append " [from agent]"
 ```
 
-`graph:seed` 使用与 UI 相同的 `buildScopedMemoryOps(agentId, "ws-demo", "sess-demo")`。
+`graph:seed` 使用与 UI 相同的 `buildScopedMemoryOps(agentId, "ws-demo", "sess-demo")`。Demo 页脚可复制 `agent:push` 命令。
+
+导出读 **服务端 CRDT**（非 IndexedDB）：面板 zip 或 `npm run export:chunks:http`。见 [导出 Markdown](./export.md)。
+
+## Demo 界面阶段
+
+| 阶段 | 行为 |
+|------|------|
+| 0 | 以 Memory Graph 为主；旧字段折叠；LWW 在「高级」 |
+| 1 | Scope 选择器 + 左右分栏 |
+| 2 | 一次性自动 seed；可关闭欢迎条 |
+| 3 | ScopeBar Presence；活动 toast；面板内 Agent 高亮 |
 
 ## 节点含义
 
@@ -71,20 +84,24 @@ npm run agent:push -- --action summarize --append " [from agent]"
 
 边 `contains` 表达层级；chunk 之间可用 `related_to` 关联。
 
-## 与任务看板的关系
+## 任务看板（同一 room）
 
-- 同一 room、同一 CRDT；**任务看板** Tab 展示 `kind: task` 节点  
-- 任务**不会**进入 Markdown 导出；执行状态在 Graph，正文可写在 chunk  
+**任务看板** Tab 与本文共用 `example-room`、`ws-demo` / `sess-demo`。任务为 `kind: "task"` 图节点，无独立表。
 
-见 [任务看板](./task-bus.md)。
+```bash
+npm run task:seed
+npm run agent:push -- --task-title "审查导出流水线" --status in_progress
+```
+
+验收清单：[任务看板](./task-bus.md)。记忆与任务 Tab 可同时使用；Agent 活动见顶部 toast 与面板提示。
 
 ## 故障排查
 
 | 现象 | 处理 |
 |------|------|
-| 页面一直转圈 | 确认 `npm run dev` 已 Listen；`node -v` 为 v20.x |
-| 无自动 seed | 同会话已 seed（`sessionStorage`）；或手动初始化 |
-| 在线人数为 0 | 需 `connected` 且至少一客户端在 room |
-| agent:push 失败 | 先启动 dev；看终端 `[agent:push]` 与页面错误条 |
+| 页面一直转圈 | 确认 `npm run dev` 已输出 `Listen on`；`npm run dev:stop` 后重启；`node -v` 为 v20.x |
+| 无自动 seed | 同会话已 seed（`sessionStorage`）或 room 已有节点；点「初始化演示工作区」 |
+| 在线人数为 0 | `connected` 后等待 Presence |
+| agent:push 失败 | 先 `npm run dev`；看终端 `[agent:push]` 与连接错误条 |
 
 更多：[故障排查](../reference/troubleshooting.md)

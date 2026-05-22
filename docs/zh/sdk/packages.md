@@ -47,4 +47,11 @@ npm publish -w @slisync/sync-server --access public
 
 协议版本当前为 **`1`**。不兼容版本 → `sync:error` / HTTP `incompatible_protocol`。
 
+## 工程细节（slisync 仓库）
+
+产品愿景与工程 Phase 1–11 / P0–P3 在实现仓库维护（本站不重复拷贝）：
+
+- [VISION.md](https://github.com/runsli/slisync/blob/main/docs/zh/VISION.md) · [ROADMAP.md](https://github.com/runsli/slisync/blob/main/docs/zh/ROADMAP.md)  
+- [packages/README.zh-CN.md](https://github.com/runsli/slisync/blob/main/packages/README.zh-CN.md) — 服务路由、Redis 集群、鉴权、审计  
+
 下一步：[React 与 useSync](./react.md)

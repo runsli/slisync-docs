@@ -50,7 +50,9 @@ flowchart TB
 | 4 | Second browser window, same URL | Same content within seconds; online count ~2 |
 | 5 | Run `npm run graph:seed` or `agent:push` | Agent activity toast; graph/chunks may update |
 | 6 | DevTools **Offline** → edit chunk → hard refresh → online | Edits remain ([Local-first](./local-first.md)) |
-| 7 | Click **Export Markdown (HTTP)** | Download `{room}-chunks.zip` |
+| 7 | Click **Export Markdown drafts (zip)** | Download `{room}-chunks.zip` (`Accept: application/zip`) |
+
+> `message` / `counter` live under collapsed **legacy shared fields** — not the main demo path.
 
 ## CLI aligned with the demo
 
@@ -59,7 +61,18 @@ npm run graph:seed
 npm run agent:push -- --action summarize --append " [from agent]"
 ```
 
-`graph:seed` uses the same `buildScopedMemoryOps(agentId, "ws-demo", "sess-demo")` as the UI.
+`graph:seed` uses the same `buildScopedMemoryOps(agentId, "ws-demo", "sess-demo")` as the UI. The demo footer has a **copy** button for the `agent:push` command.
+
+Export reads **server CRDT** (not IndexedDB): use the panel zip button or `npm run export:chunks:http`. See [Export Markdown](./export.md).
+
+## Demo UI phases
+
+| Phase | Behavior |
+|-------|----------|
+| 0 | Memory Graph first; legacy fields collapsed; LWW under **Advanced** |
+| 1 | Scope picker + two-column layout |
+| 2 | One-time auto-seed; dismissible welcome strip |
+| 3 | Presence in scope bar; activity toasts; in-panel Agent highlight |
 
 ## Node kinds
 
@@ -71,20 +84,24 @@ npm run agent:push -- --action summarize --append " [from agent]"
 
 `contains` edges express hierarchy; chunks may link via `related_to`.
 
-## Task board relationship
+## Task board (same room)
 
-- Same room, same CRDT; **Task board** tab shows `kind: task` nodes  
-- Tasks are **not** included in Markdown export; track execution on the graph, prose in chunks  
+The **Task board** tab shares `example-room` and scope `ws-demo` / `sess-demo` with this guide. Tasks are graph nodes with `kind: "task"` — not a separate store.
 
-See [Task bus](./task-bus.md).
+```bash
+npm run task:seed
+npm run agent:push -- --task-title "Review export pipeline" --status in_progress
+```
+
+5-minute acceptance: [Task bus](./task-bus.md). Memory and task tabs can be used together; agent activity uses top toasts and in-panel hints.
 
 ## Troubleshooting
 
 | Symptom | Fix |
 |---------|-----|
-| Page spins forever | Ensure `npm run dev` printed Listen; `node -v` is v20.x |
-| No auto-seed | Session already seeded (`sessionStorage`); or init manually |
-| Online count 0 | Need `connected` and at least one client in the room |
-| `agent:push` fails | Start dev first; check `[agent:push]` in terminal and UI error bar |
+| Page spins forever | Ensure `npm run dev` printed `Listen on`; `npm run dev:stop` then restart; `node -v` is v20.x |
+| No auto-seed | Session already seeded (`sessionStorage`) or room has nodes; click init demo workspace |
+| Online count 0 | Wait for Presence after `connected` |
+| `agent:push` fails | Start `npm run dev` first; read CLI error and connection banner |
 
 More: [Troubleshooting](/reference/troubleshooting).

@@ -8,6 +8,7 @@
 |------|------|
 | `NEXT_PUBLIC_SYNC_URL` | 浏览器连 Sync 的地址（独立 sync 时如 `http://localhost:3001`） |
 | `HOST` / `NEXT_DEV_HOST` | 绑定或 Next 开发主机 |
+| `SYNC_PORT` / `SYNC_HOST` | 独立 sync 监听（默认 `:3001`、`0.0.0.0`） |
 
 ## 持久化（服务端，三选一）
 
@@ -17,6 +18,7 @@
 | `SYNC_CRDT_POSTGRES_URL` | PostgreSQL CRDT 表 |
 | `SYNC_CRDT_DATA_PATH` | JSON 文件，默认 `.sync-data/crdt-rooms.json` |
 | `SYNC_DATA_PATH` | LWW room JSON（非 CRDT 图） |
+| `SYNC_SOCKET_ADAPTER` | 设为 `0` 可在有 `REDIS_URL` 时关闭 Redis Socket 广播 |
 
 ## 鉴权
 
@@ -46,12 +48,21 @@
 | `SYNC_HTTP_URL` / `SYNC_EXPORT_HTTP_URL` | CLI `export:chunks:http` 根地址 |
 | `SYNC_EXPORT_WORKSPACE` / `SESSION` / `MIN_IMPORTANCE` | 过滤 |
 
+## 审计
+
+| 变量 | 说明 |
+|------|------|
+| `SYNC_AUDIT_PATH` | 追加写审计 JSONL（默认 `.sync-data/audit.jsonl`） |
+| `SYNC_AUDIT_MEMORY=1` | 未设路径时用内存审计 |
+
 ## 其它
 
 | 变量 | 说明 |
 |------|------|
-| `SYNC_AUDIT_PATH` | 审计 JSONL |
 | `SYNC_GRAPH_SCOPED=0` | `graph:seed` 使用 legacy 图 |
 | `SYNC_ROOM` | CLI 默认 room，常 `example-room` |
+| `SYNC_URL` | CLI Socket 根地址（`agent:push`、`graph:seed`） |
+| `SYNC_AGENT_ID` | CLI agent id 覆盖 |
+| `SYNC_CRDT_DATA_PATH` | `export:chunks` 文件源 / CI fixture 路径 |
 
 [English](/reference/env)

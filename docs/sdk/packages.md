@@ -47,4 +47,11 @@ npm publish -w @slisync/sync-server --access public
 
 Protocol version is currently **`1`**. Incompatible versions → `sync:error` / HTTP `incompatible_protocol`.
 
+## Engineering detail (slisync repo)
+
+Product vision and engineering Phase 1–11 / P0–P3 live in the implementation repo (not duplicated here):
+
+- [VISION.md](https://github.com/runsli/slisync/blob/main/docs/en/VISION.md) · [ROADMAP.md](https://github.com/runsli/slisync/blob/main/docs/en/ROADMAP.md)  
+- [packages/README.md](https://github.com/runsli/slisync/blob/main/packages/README.md) — server routes, Redis cluster, auth, audit  
+
 [React & useSync](./react.md)

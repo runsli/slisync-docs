@@ -58,6 +58,16 @@ const sidebarZh = [
       { text: "故障排查", link: "/zh/reference/troubleshooting" },
     ],
   },
+  {
+    text: "工程文档（slisync 仓库）",
+    collapsed: true,
+    items: [
+      { text: "愿景", link: `${githubRepo}/blob/main/docs/zh/VISION.md` },
+      { text: "路线图", link: `${githubRepo}/blob/main/docs/zh/ROADMAP.md` },
+      { text: "三件套与 Phase", link: `${githubRepo}/blob/main/packages/README.zh-CN.md` },
+      { text: "仓库文档索引", link: `${githubRepo}/blob/main/docs/README.md` },
+    ],
+  },
 ];
 
 const sidebarEn = [
@@ -112,6 +122,16 @@ const sidebarEn = [
     items: [
       { text: "Environment variables", link: "/reference/env" },
       { text: "Troubleshooting", link: "/reference/troubleshooting" },
+    ],
+  },
+  {
+    text: "Engineering (slisync repo)",
+    collapsed: true,
+    items: [
+      { text: "Vision", link: `${githubRepo}/blob/main/docs/en/VISION.md` },
+      { text: "Roadmap", link: `${githubRepo}/blob/main/docs/en/ROADMAP.md` },
+      { text: "Packages & phases", link: `${githubRepo}/blob/main/packages/README.md` },
+      { text: "In-repo docs index", link: `${githubRepo}/blob/main/docs/README.md` },
     ],
   },
 ];

@@ -4,7 +4,8 @@
 
 | 现象 | 处理 |
 |------|------|
-| 浏览器一直转圈 | 确认 `npm run dev` 已输出 Listen；`npm run dev:stop` 后重启 |
+| 浏览器一直转圈 | 确认 `npm run dev` 已输出 `Listen on`；`npm run dev:stop` 后重启 |
+| `.sync-data/crdt-rooms.json` 损坏 | `npm run sync:reset` 或从 `.corrupt-*.bak` 恢复 |
 | `node -v` 不是 20.x | `nvm use 20` |
 | 双窗口不同步 | 同一 URL、同一 room；等待 `syncReady` |
 | 独立 sync 连不上 | 设置 `NEXT_PUBLIC_SYNC_URL=http://localhost:3001` |

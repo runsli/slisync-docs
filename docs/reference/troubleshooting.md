@@ -4,7 +4,8 @@
 
 | Symptom | Fix |
 |---------|-----|
-| Browser spins forever | Confirm `npm run dev` printed Listen; `npm run dev:stop` then restart |
+| Browser spins forever | Confirm `npm run dev` printed `Listen on`; `npm run dev:stop` then restart |
+| Corrupt `.sync-data/crdt-rooms.json` | `npm run sync:reset` or restore from `.corrupt-*.bak` backup |
 | `node -v` not 20.x | `nvm use 20` |
 | Two windows out of sync | Same URL, same room; wait for `syncReady` |
 | Standalone sync unreachable | Set `NEXT_PUBLIC_SYNC_URL=http://localhost:3001` |

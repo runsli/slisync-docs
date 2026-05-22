@@ -100,3 +100,7 @@ npm run graph:seed
 ```
 
 无单独 export 缓存表。
+
+## 延伸阅读
+
+[导出 Markdown](./export.md) · [共忆 → Markdown → 静态站](./story-pipeline.md) · [环境变量](../reference/env.md)

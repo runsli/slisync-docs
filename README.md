@@ -14,7 +14,7 @@ npm run dev      # http://localhost:5173  （中文默认 /zh/）
 npm run build
 ```
 
-在 **slisync** 根目录（若已配置）：`npm run docs:dev` → 调用同级 `slisync-docs`
+文档站命令仅在 **slisync-docs** 本仓库执行（slisync 应用仓库无 `docs:dev` 脚本）
 
 ## 站点结构（中英）
 

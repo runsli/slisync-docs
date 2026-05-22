@@ -54,8 +54,9 @@ Slisync 用 **12 阶段产品愿景** 描述方向，用 **工程 Phase 1–11 /
 
 ## 已完成的生态能力（演示相关）
 
-- Markdown 导出 M0–M4：CLI、HTTP、`fetchExportChunksZipHttp`、可选 Postgres  
+- Markdown 导出 M0–M4：CLI（`export:chunks`）、HTTP（`export:chunks:http`）、`fetchExportChunksZipHttp`、可选 Postgres  
 - Room 任务总线 + Demo 任务看板 Tab  
+- 浏览器 IndexedDB local-first + 离线 outbox（[Local-first](../guide/local-first.md)）  
 
 ## 下一步（非承诺排期）
 
