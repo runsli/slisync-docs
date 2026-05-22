@@ -4,6 +4,7 @@
   "type": "module",
   "version": "0.1.0",
   "description": "Slisync official site (VitePress)",
+  "license": "MIT",
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
